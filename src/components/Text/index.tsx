@@ -6,27 +6,29 @@ interface Props {
   color?: keyof typeof theme.colors
 }
 
-const color = css<Props>`
-  ${({ color = 'dark', theme }) => theme.colors[color]};
+const defaultStyles = css<Props>`
+  color: ${({ color = 'dark', theme }) => theme.colors[color]};
+  letter-spacing: 0.2px;
 `
 
-export const Hero = styled.h1<Props>`
-  color: ${color};
+export const Hero = styled.h1`
+  ${defaultStyles}
   font-size: ${({ theme }) => theme.fontSizes.hero};
 `
 
-export const Title = styled.h2<Props>`
-  color: ${color};
+export const Title = styled.h2`
+  ${defaultStyles}
   font-size: ${({ theme }) => theme.fontSizes.title};
 `
 
-export const Body = styled.p<Props>`
-  color: ${color};
+export const Body = styled.p`
+  ${defaultStyles}
   font-size: ${({ theme }) => theme.fontSizes.body};
 `
 
-export const Cta = styled.span<Props>`
-  color: ${color};
+export const Cta = styled.span`
+  ${defaultStyles}
+  font-family: ${({ theme }) => theme.fontFamily};
   font-size: ${({ theme }) => theme.fontSizes.cta};
   font-weight: bold;
 `

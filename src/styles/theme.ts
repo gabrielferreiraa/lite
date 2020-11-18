@@ -1,4 +1,5 @@
 export default {
+  fontFamily: ['Rubik', 'sans-serif'].join(','),
   colors: {
     primary: '#4076FA',
     success: '#00D233',
@@ -10,6 +11,7 @@ export default {
     grey200: '#D8D8D8',
     grey300: '#BFBFBF',
     grey400: '#A7A7A7',
+    white: '#FFFFFF',
   },
   fontSizes: {
     hero: '2.625rem',
