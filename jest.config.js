@@ -1,5 +1,7 @@
 module.exports = {
   verbose: false,
+  roots: ['<rootDir>/src'],
+  modulePaths: ['<rootDir>/src'],
   testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
   setupFilesAfterEnv: ['<rootDir>/setupTests.js'],
   transform: {

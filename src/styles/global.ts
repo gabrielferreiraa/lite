@@ -7,7 +7,7 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body {
-    font: 400 18px Rubik, sans-serif;
+  html {
+    font: 400 16px Rubik, sans-serif;
   }
 `
