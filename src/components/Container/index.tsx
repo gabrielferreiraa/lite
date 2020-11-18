@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export default styled.div`
   margin: 0 auto;
   width: auto;
-  padding: 15px;
+  padding: 0 15px;
 
   @media screen and (min-width: 768px) {
     max-width: 750px;
