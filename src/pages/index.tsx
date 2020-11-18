@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { Hero, Body, Cta, Title } from 'components/Text'
 
 const Home: React.FC = () => (
-  <div>
+  <div data-testid="home-page">
     <Head>
       <title>NFe - Lite</title>
       <link rel="icon" href="/favicon.ico" />
