@@ -1,6 +1,8 @@
 import React from 'react'
 import Head from 'next/head'
 
+import { Hero, Body, Cta, Title } from 'components/Text'
+
 const Home: React.FC = () => (
   <div>
     <Head>
@@ -9,7 +11,10 @@ const Home: React.FC = () => (
     </Head>
 
     <main>
-      <h1>Lite</h1>
+      <Hero>Aa</Hero>
+      <Title>Bb</Title>
+      <Body>Cc</Body>
+      <Cta>Dd</Cta>
     </main>
   </div>
 )

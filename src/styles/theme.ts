@@ -6,11 +6,15 @@ export default {
     alert: '#E8C547',
     dark: '#001634',
     extraDark: '#091223',
-    grey: {
-      100: '#F3F3F3',
-      200: '#D8D8D8',
-      300: '#BFBFBF',
-      400: '#A7A7A7',
-    },
+    grey100: '#F3F3F3',
+    grey200: '#D8D8D8',
+    grey300: '#BFBFBF',
+    grey400: '#A7A7A7',
+  },
+  fontSizes: {
+    hero: '2.625rem',
+    title: '1.375rem',
+    body: '1.125rem',
+    cta: '0.875rem',
   },
 }
