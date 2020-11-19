@@ -1,6 +1,10 @@
 import { atom } from 'recoil'
 
-export const orderState = atom({
+export interface OrderStateProps {
+  price: number
+  qtdConsults: number
+}
+export const orderState = atom<OrderStateProps>({
   key: 'order',
   default: {
     price: 0,
@@ -8,7 +12,14 @@ export const orderState = atom({
   },
 })
 
-export const creditCardState = atom({
+export interface CreditCardStateProps {
+  name: string
+  number: string
+  expiry: string
+  cvc: string
+  cnpj: string
+}
+export const creditCardState = atom<CreditCardStateProps>({
   key: 'creditCard',
   default: {
     name: '',
