@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export default styled.a`
   color: ${({ theme }) => theme.colors.primary};
+  transition: color 300ms ease;
   font-weight: 700;
   cursor: pointer;
   position: relative;
@@ -15,9 +16,14 @@ export default styled.a`
     height: 1px;
     background-color: ${({ theme }) => theme.colors.primary};
     transition: height 200ms ease;
+    z-index: -1;
   }
 
-  &:hover:after {
-    height: 2px;
+  &:hover {
+    color: ${({ theme }) => theme.colors.white};
+
+    &:after {
+      height: 100%;
+    }
   }
 `

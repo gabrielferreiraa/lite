@@ -7,3 +7,14 @@ export const orderState = atom({
     qtdConsults: 0,
   },
 })
+
+export const creditCardState = atom({
+  key: 'creditCard',
+  default: {
+    name: '',
+    number: '',
+    expiry: '',
+    cvc: '',
+    cnpj: '',
+  },
+})

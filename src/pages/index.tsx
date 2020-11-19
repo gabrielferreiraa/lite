@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { useRecoilState } from 'recoil'
 
 import { orderState } from 'state'
-import { Hero, Body, Title } from 'components/Text'
+import { Hero, Body } from 'components/Text'
 import Button from 'components/Button'
 import ConsultsSlider from 'components/ConsultsSlider'
 import {
@@ -45,13 +45,12 @@ const Home: React.FC = () => {
     <div data-testid="home-page">
       <Head>
         <title>Lite | Home</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Grid>
         <Column>
           <Hero color="dark">this is the Lite!</Hero>
-          <Body color="primary">buy consults</Body>
+          <Body color="grey400">buy consults</Body>
           <CtaArea>
             <Button
               label={`Buy ${order.qtdConsults} consults`}

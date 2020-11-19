@@ -1,9 +1,9 @@
 import { render, screen } from 'shared/test-utils'
-import App from 'pages'
+import Home from 'pages'
 
-describe('App', () => {
+describe('Home', () => {
   it('renders without crashing', () => {
-    render(<App />)
+    render(<Home />)
     expect(screen.getByTestId('home-page')).toBeInTheDocument()
   })
 })
