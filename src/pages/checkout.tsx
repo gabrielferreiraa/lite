@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import Head from 'next/head'
 import Cards from 'react-credit-cards'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 
 import Field from 'components/Field'
 import Link from 'components/Link'
-import { creditCardState } from 'state'
+import { orderState, creditCardState } from 'state'
+import { showOrder } from 'shared/utils'
 import {
   CheckoutTitle,
   CardsWrapper,
@@ -17,13 +18,23 @@ import {
 
 const Summary: React.FC = () => {
   const [focus, setFocus] = useState('')
+  const order = useRecoilValue(orderState)
   const [creditCard, setCreditCard] = useRecoilState(creditCardState)
 
-  const handleFocus = ({ target }: React.FocusEvent<HTMLInputElement>) =>
-    setFocus(target.name)
+  const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+    event.preventDefault()
+    setFocus(event.target.name)
+  }
 
-  const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) =>
-    setCreditCard({ ...creditCard, [target.name]: target.value })
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault()
+    setCreditCard({ ...creditCard, [event.target.name]: event.target.value })
+  }
+
+  const handleSubmit = event => {
+    event.preventDefault()
+    showOrder(order, creditCard)
+  }
 
   return (
     <div data-testid="checkout-page">
@@ -32,7 +43,7 @@ const Summary: React.FC = () => {
       </Head>
 
       <CheckoutTitle>checkout</CheckoutTitle>
-      <form>
+      <form onSubmit={handleSubmit}>
         <FormWrapper>
           <CardsWrapper>
             <Cards
@@ -51,6 +62,8 @@ const Summary: React.FC = () => {
               label="Credit Number"
               placeholder="0000 0000 0000 0000"
               className="number"
+              mask="#### #### #### ####"
+              value={creditCard.number}
               onChange={handleChange}
               onFocus={handleFocus}
             />
@@ -60,6 +73,7 @@ const Summary: React.FC = () => {
               label="Name"
               placeholder="Exactly as it's on the card"
               className="name"
+              value={creditCard.name}
               onChange={handleChange}
               onFocus={handleFocus}
             />
@@ -68,8 +82,10 @@ const Summary: React.FC = () => {
               id="expiry"
               name="expiry"
               label="Valid Thru"
-              placeholder="000"
+              placeholder="MM/YY"
               className="expiry"
+              mask="##/##"
+              value={creditCard.expiry}
               onChange={handleChange}
               onFocus={handleFocus}
             />
@@ -80,6 +96,8 @@ const Summary: React.FC = () => {
               label="CVC"
               placeholder="000"
               className="cvc"
+              mask="###"
+              value={creditCard.cvc}
               onChange={handleChange}
               onFocus={handleFocus}
             />
@@ -90,6 +108,8 @@ const Summary: React.FC = () => {
               label="CNPJ"
               placeholder="00.000.000/0000-00"
               className="cnpj"
+              mask="##.###.###/####-##"
+              value={creditCard.cnpj}
               onChange={handleChange}
               onFocus={handleFocus}
             />

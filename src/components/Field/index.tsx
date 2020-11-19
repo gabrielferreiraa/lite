@@ -1,8 +1,11 @@
+import NumberFormat from 'react-number-format'
 import { Label, Input } from './Field.styles'
 
 interface Props {
   type?: string
   className?: string
+  mask?: string
+  value: any
   id: string
   name: string
   label: React.ReactNode
@@ -13,6 +16,8 @@ interface Props {
 const Field: React.FC<Props> = ({
   type = 'text',
   className = '',
+  mask = '',
+  value,
   id,
   name,
   label,
@@ -20,17 +25,23 @@ const Field: React.FC<Props> = ({
   onChange,
   onFocus,
 }) => {
+  const props = {
+    id,
+    value,
+    name,
+    placeholder,
+    onChange,
+    onFocus,
+  }
+
   return (
     <div className={className}>
       <Label htmlFor={id}>{label}</Label>
-      <Input
-        type={type}
-        id={id}
-        name={name}
-        placeholder={placeholder}
-        onChange={onChange}
-        onFocus={onFocus}
-      />
+      {!!mask ? (
+        <NumberFormat customInput={Input} format={mask} {...props} />
+      ) : (
+        <Input type={type} {...props} />
+      )}
     </div>
   )
 }
