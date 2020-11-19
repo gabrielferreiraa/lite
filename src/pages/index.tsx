@@ -44,7 +44,7 @@ const Home: React.FC = () => {
   return (
     <div data-testid="home-page">
       <Head>
-        <title>NFe - Lite</title>
+        <title>Lite | Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

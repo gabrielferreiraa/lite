@@ -13,9 +13,10 @@ const Button: React.FC<Props> = ({
   outline = false,
   color,
   onClick,
+  ...props
 }) => {
   return (
-    <ButtonStyled outline={outline} color={color} onClick={onClick}>
+    <ButtonStyled outline={outline} color={color} onClick={onClick} {...props}>
       <Cta>{label}</Cta>
     </ButtonStyled>
   )
