@@ -1,6 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 import Head from 'next/head'
+import { useRecoilState } from 'recoil'
 
+import { orderState } from 'state'
 import { Hero, Body, Title } from 'components/Text'
 import Button from 'components/Button'
 import ConsultsSlider from 'components/ConsultsSlider'
@@ -14,21 +17,29 @@ import {
   QuantityConsultsWrapper,
 } from 'styles/pages/Home.styles'
 import { MIN_OF_CONSULTS, MAX_OF_CONSULTS } from 'shared/constants'
-
-const calc = v => v * 2 // rule to calc consult price
+import { calcConsultPrice } from 'shared/utils'
 
 const Home: React.FC = () => {
-  const [totalConsults, setTotalConsults] = useState(0)
-  const [price, setPrice] = useState(0)
+  const router = useRouter()
+  const [order, setOrder] = useRecoilState(orderState)
 
-  const handleChangeTotalConsults = value => {
-    if (Number(value) > MAX_OF_CONSULTS)
-      return setTotalConsults(MAX_OF_CONSULTS)
+  const handleChangeQtdConsults = (value: number) => {
+    const isGreaterThanMax = value > MAX_OF_CONSULTS
 
-    return setTotalConsults(Number(value))
+    setOrder({
+      ...order,
+      qtdConsults: isGreaterThanMax ? MAX_OF_CONSULTS : value,
+    })
   }
 
-  useEffect(() => setPrice(calc(Number(totalConsults))), [totalConsults])
+  useEffect(
+    () =>
+      setOrder({
+        ...order,
+        price: calcConsultPrice(Number(order.qtdConsults)),
+      }),
+    [order.qtdConsults],
+  )
 
   return (
     <div data-testid="home-page">
@@ -42,21 +53,30 @@ const Home: React.FC = () => {
           <Hero color="dark">this is the Lite!</Hero>
           <Body color="primary">buy consults</Body>
           <CtaArea>
-            <Button label={`Buy ${totalConsults} consults`} color="alert" />
+            <Button
+              label={`Buy ${order.qtdConsults} consults`}
+              color="alert"
+              onClick={() => router.push('/summary')}
+            />
           </CtaArea>
         </Column>
         <Column>
-          <Total>R$ {price}</Total>
+          <Total>R$ {order.price}</Total>
           <ConsultsSliderWrapper>
-            <ConsultsSlider value={totalConsults} onChange={setTotalConsults} />
+            <ConsultsSlider
+              value={order.qtdConsults}
+              onChange={qtdConsults => setOrder({ ...order, qtdConsults })}
+            />
           </ConsultsSliderWrapper>
           <QuantityConsultsWrapper>
             <QuantityInput
               placeholder="0"
-              value={totalConsults}
+              value={order.qtdConsults}
               minLength={MIN_OF_CONSULTS}
               maxLength={MAX_OF_CONSULTS}
-              onChange={({ target }) => handleChangeTotalConsults(target.value)}
+              onChange={({ target }) =>
+                handleChangeQtdConsults(Number(target.value))
+              }
             />
             <Body>consults</Body>
           </QuantityConsultsWrapper>
