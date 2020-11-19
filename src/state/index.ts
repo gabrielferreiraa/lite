@@ -16,7 +16,7 @@ export interface CreditCardStateProps {
   name: string
   number: string
   expiry: string
-  cvc: string
+  cvv: string
   cnpj: string
 }
 export const creditCardState = atom<CreditCardStateProps>({
@@ -25,7 +25,7 @@ export const creditCardState = atom<CreditCardStateProps>({
     name: '',
     number: '',
     expiry: '',
-    cvc: '',
+    cvv: '',
     cnpj: '',
   },
 })

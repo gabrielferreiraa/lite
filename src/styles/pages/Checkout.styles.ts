@@ -33,7 +33,7 @@ export const FieldsWrapper = styled.div`
     grid-column: 1;
   }
 
-  .cvc {
+  .cvv {
     grid-column: 2;
   }
 
