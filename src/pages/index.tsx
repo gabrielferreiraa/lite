@@ -7,6 +7,8 @@ import { orderState } from 'state'
 import { Hero, Body } from 'components/Text'
 import Button from 'components/Button'
 import ConsultsSlider from 'components/ConsultsSlider'
+import { MIN_OF_CONSULTS, MAX_OF_CONSULTS } from 'shared/constants'
+import { calcConsultPrice, formatCurrency } from 'shared/utils'
 import {
   Grid,
   CtaArea,
@@ -16,8 +18,6 @@ import {
   ConsultsSliderWrapper,
   QuantityConsultsWrapper,
 } from 'styles/pages/Home.styles'
-import { MIN_OF_CONSULTS, MAX_OF_CONSULTS } from 'shared/constants'
-import { calcConsultPrice } from 'shared/utils'
 
 const Home: React.FC = () => {
   const router = useRouter()
@@ -60,7 +60,7 @@ const Home: React.FC = () => {
           </CtaArea>
         </Column>
         <Column>
-          <Total>R$ {order.price}</Total>
+          <Total>{formatCurrency(order.price)}</Total>
           <ConsultsSliderWrapper>
             <ConsultsSlider
               value={order.qtdConsults}

@@ -5,6 +5,7 @@ import { useRecoilValue } from 'recoil'
 import { orderState } from 'state'
 import { Title, Body } from 'components/Text'
 import Link from 'components/Link'
+import { formatCurrency } from 'shared/utils'
 import {
   SummaryTitle,
   SummaryContainer,
@@ -33,7 +34,7 @@ const Summary: React.FC = () => {
           </SummaryBoxItem>
           <SummaryBoxItem>
             <Body>Price</Body>
-            <Title>R$ {price}</Title>
+            <Title>{formatCurrency(price)}</Title>
           </SummaryBoxItem>
         </SummaryBox>
         <SummaryActions>
