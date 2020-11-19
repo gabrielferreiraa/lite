@@ -8,7 +8,7 @@ import { Hero, Body } from 'components/Text'
 import Button from 'components/Button'
 import ConsultsSlider from 'components/ConsultsSlider'
 import { MIN_OF_CONSULTS, MAX_OF_CONSULTS } from 'shared/constants'
-import { calcConsultPrice, formatCurrency } from 'shared/utils'
+import { calcConsultsPrice, formatCurrency } from 'shared/utils'
 import {
   Grid,
   CtaArea,
@@ -36,7 +36,7 @@ const Home: React.FC = () => {
     () =>
       setOrder({
         ...order,
-        price: calcConsultPrice(Number(order.qtdConsults)),
+        price: calcConsultsPrice(Number(order.qtdConsults)),
       }),
     [order.qtdConsults],
   )

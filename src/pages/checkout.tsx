@@ -23,7 +23,7 @@ const Summary: React.FC = () => {
 
   const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
     event.preventDefault()
-    setFocus(event.target.name)
+    setFocus(event.target.name === 'cvv' ? 'cvc' : event.target.name)
   }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +47,7 @@ const Summary: React.FC = () => {
         <FormWrapper>
           <CardsWrapper>
             <Cards
-              cvc={creditCard.cvc}
+              cvc={creditCard.cvv}
               expiry={creditCard.expiry}
               focused={focus}
               name={creditCard.name}
@@ -59,7 +59,7 @@ const Summary: React.FC = () => {
               type="tel"
               id="number"
               name="number"
-              label="Credit Number"
+              label="Card Number"
               placeholder="0000 0000 0000 0000"
               className="number"
               mask="#### #### #### ####"
@@ -81,7 +81,7 @@ const Summary: React.FC = () => {
               type="tel"
               id="expiry"
               name="expiry"
-              label="Valid Thru"
+              label="Expiration Date"
               placeholder="MM/YY"
               className="expiry"
               mask="##/##"
@@ -91,13 +91,13 @@ const Summary: React.FC = () => {
             />
             <Field
               type="tel"
-              id="cvc"
-              name="cvc"
-              label="CVC"
+              id="cvv"
+              name="cvv"
+              label="CVV"
               placeholder="000"
-              className="cvc"
+              className="cvv"
               mask="###"
-              value={creditCard.cvc}
+              value={creditCard.cvv}
               onChange={handleChange}
               onFocus={handleFocus}
             />
