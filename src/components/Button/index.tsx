@@ -7,16 +7,24 @@ interface Props {
   outline?: boolean
   color?: keyof typeof theme.colors
   onClick?: () => void
+  type?: 'button' | 'submit'
 }
 const Button: React.FC<Props> = ({
   label,
   outline = false,
-  color,
-  onClick,
+  color = 'primary',
+  onClick = () => {},
+  type = 'button',
   ...props
 }) => {
   return (
-    <ButtonStyled outline={outline} color={color} onClick={onClick} {...props}>
+    <ButtonStyled
+      type={type}
+      outline={outline}
+      color={color}
+      onClick={onClick}
+      {...props}
+    >
       <Cta>{label}</Cta>
     </ButtonStyled>
   )
