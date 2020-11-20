@@ -41,11 +41,11 @@ export const calcConsultsPrice = (qtdConsults: number): number => {
 export const showOrder = (
   order: OrderStateProps,
   creditCard: CreditCardStateProps,
-) => {
+): void => {
   alert(JSON.stringify({ order, creditCard }, null, 2))
 }
 
-export const formatCurrency = (number: number) =>
+export const formatCurrency = (number: number): string =>
   new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(
     number,
   )

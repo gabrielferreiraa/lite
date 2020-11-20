@@ -13,7 +13,7 @@ const Button: React.FC<Props> = ({
   label,
   outline = false,
   color = 'primary',
-  onClick = () => {},
+  onClick = () => null,
   type = 'button',
   ...props
 }) => {

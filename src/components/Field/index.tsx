@@ -5,7 +5,7 @@ interface Props {
   type?: string
   className?: string
   mask?: string
-  value: any
+  value: string
   id: string
   name: string
   label: React.ReactNode
@@ -37,7 +37,7 @@ const Field: React.FC<Props> = ({
   return (
     <div className={className}>
       <Label htmlFor={id}>{label}</Label>
-      {!!mask ? (
+      {mask ? (
         <NumberFormat customInput={Input} format={mask} {...props} />
       ) : (
         <Input type={type} {...props} />
