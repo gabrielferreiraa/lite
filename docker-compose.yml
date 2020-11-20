@@ -1,0 +1,13 @@
+version: '3'
+services:
+  lite-web:
+    build: .
+    command: yarn dev
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/lite-web
+      - node_modules:/usr/lite-web/node_modules
+
+volumes:
+  node_modules: {}
