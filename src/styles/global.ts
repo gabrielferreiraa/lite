@@ -9,5 +9,9 @@ export default createGlobalStyle`
 
   html {
     font: 400 16px Rubik, sans-serif;
+
+    @media screen and (max-width: 768px) {
+      font-size: 14px;
+    }
   }
 `

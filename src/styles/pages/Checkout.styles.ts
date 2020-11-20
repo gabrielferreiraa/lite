@@ -13,21 +13,34 @@ export const CardsWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
 
-  .rccs {
-    margin: 0 5em 0 0;
+  @media screen and (max-width: 768px) {
+    margin-bottom: 3em;
+  }
+
+  @media screen and (min-width: 768px) {
+    .rccs {
+      margin: 0 5em 0 0;
+    }
   }
 `
 
 export const FormWrapper = styled.div`
-  display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
+
+  @media screen and (min-width: 768px) {
+    display: grid;
+  }
 `
 
 export const FieldsWrapper = styled.div`
   display: grid;
   grid-gap: 1em;
-  padding: 0 5em;
+  padding: 0 1em;
+
+  @media screen and (min-width: 460px) {
+    padding: 0 5em;
+  }
 
   .expiry {
     grid-column: 1;
@@ -45,7 +58,7 @@ export const FieldsWrapper = styled.div`
 `
 
 export const CheckoutActions = styled.div`
-  margin-top: 3em;
+  margin: 3em auto 3em auto;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -12,7 +12,8 @@ import { calcConsultsPrice, formatCurrency } from 'shared/utils'
 import {
   Grid,
   CtaArea,
-  Column,
+  IntroColumn,
+  SliderColumn,
   QuantityInput,
   Total,
   ConsultsSliderWrapper,
@@ -48,7 +49,7 @@ const Home: React.FC = () => {
       </Head>
 
       <Grid>
-        <Column>
+        <IntroColumn>
           <Hero color="dark">this is the Lite!</Hero>
           <Body color="grey400">buy consults</Body>
           <CtaArea>
@@ -56,10 +57,11 @@ const Home: React.FC = () => {
               label={`Buy ${order.qtdConsults} consults`}
               color="alert"
               onClick={() => router.push('/summary')}
+              outline
             />
           </CtaArea>
-        </Column>
-        <Column>
+        </IntroColumn>
+        <SliderColumn>
           <Total>{formatCurrency(order.price)}</Total>
           <ConsultsSliderWrapper>
             <ConsultsSlider
@@ -69,6 +71,7 @@ const Home: React.FC = () => {
           </ConsultsSliderWrapper>
           <QuantityConsultsWrapper>
             <QuantityInput
+              type="tel"
               placeholder="0"
               value={order.qtdConsults}
               minLength={MIN_OF_CONSULTS}
@@ -77,9 +80,9 @@ const Home: React.FC = () => {
                 handleChangeQtdConsults(Number(target.value))
               }
             />
-            <Body>consults</Body>
+            <Body color="grey400">consults</Body>
           </QuantityConsultsWrapper>
-        </Column>
+        </SliderColumn>
       </Grid>
     </div>
   )

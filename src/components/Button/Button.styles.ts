@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { lighten } from 'polished'
 
 import theme from 'styles/theme'
 import { Cta } from 'components/Text'
@@ -22,6 +23,11 @@ const outlineStyles = css<Props>`
       color: ${({ theme }) => theme.colors.white};
     }
   }
+
+  &:active {
+    background-color: ${({ theme, color }) =>
+      lighten(0.1, theme.colors[color])};
+  }
 `
 
 const normalStyles = css<Props>`
@@ -37,6 +43,10 @@ const normalStyles = css<Props>`
     ${Cta} {
       color: ${({ theme, color }) => theme.colors[color]};
     }
+  }
+
+  &:active {
+    background-color: ${({ theme }) => lighten(0.25, theme.colors.grey400)};
   }
 `
 

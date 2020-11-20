@@ -2,12 +2,26 @@ import styled from 'styled-components'
 import { Title } from 'components/Text'
 
 export const Grid = styled.div`
-  display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 100vh;
+  text-align: center;
+
+  @media screen and (min-width: 768px) {
+    display: grid;
+    height: 100vh;
+    text-align: inherit;
+  }
 `
 
-export const Column = styled.div`
+export const IntroColumn = styled.div`
+  align-self: center;
+  justify-self: center;
+
+  @media screen and (max-width: 768px) {
+    margin: 3em 0;
+  }
+`
+
+export const SliderColumn = styled.div`
   align-self: center;
   justify-self: center;
 `
@@ -22,6 +36,7 @@ export const QuantityInput = styled.input`
   font-family: ${({ theme }) => theme.fontFamily};
   font-weight: 700;
   text-align: center;
+  width: 100%;
   border: none;
   outline: none;
 `
@@ -34,6 +49,10 @@ export const Total = styled(Title)`
 export const ConsultsSliderWrapper = styled.div`
   position: relative;
   height: 50vh;
+
+  @media screen and (max-width: 768px) {
+    height: 30vh;
+  }
 `
 
 export const QuantityConsultsWrapper = styled.div`

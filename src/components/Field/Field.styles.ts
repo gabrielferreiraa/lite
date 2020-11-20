@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { transparentize } from 'polished'
 
 export const Label = styled.label`
   display: block;
@@ -8,17 +9,21 @@ export const Label = styled.label`
 `
 
 export const Input = styled.input`
+  width: 100%;
   font-family: ${({ theme }) => theme.fontFamily};
+  font-size: 1rem;
+  font-weight: 500;
   color: ${({ theme }) => theme.colors.dark};
   outline: none;
   padding: 5px 10px;
   height: 40px;
   border: 1px solid ${({ theme }) => theme.colors.grey300};
   border-radius: 4px;
-  font-size: 1rem;
-  width: 100%;
+  transition: border-color 300ms ease, box-shadow 300ms ease;
 
   &:focus {
-    box-shadow: 0px 0px 0px 1px ${({ theme }) => theme.colors.grey300};
+    border-color: ${({ theme }) => theme.colors.primary};
+    box-shadow: 0px 0px 0px 2px
+      ${({ theme }) => transparentize(0.5, theme.colors.primary)};
   }
 `
