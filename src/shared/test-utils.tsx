@@ -1,11 +1,17 @@
-import React from 'react'
 import { RecoilRoot } from 'recoil'
-import { render as tlrRender, RenderOptions } from '@testing-library/react'
+import {
+  render as tlrRender,
+  RenderOptions,
+  RenderResult,
+} from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
 
 import theme from 'styles/theme'
 
-const render = (Component: React.ReactElement, options: RenderOptions = {}) => {
+const render = (
+  Component: React.ReactElement,
+  options: RenderOptions = {},
+): RenderResult => {
   const Wrapper = ({ children }) => (
     <RecoilRoot>
       <ThemeProvider theme={theme}>{children}</ThemeProvider>

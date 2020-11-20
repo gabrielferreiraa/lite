@@ -1,4 +1,4 @@
-import { render, screen } from 'shared/test-utils'
+import { render } from 'shared/test-utils'
 import ConsultsSlider from '.'
 
 describe('components/ConsultsSlider', () => {

@@ -50,7 +50,7 @@ describe('components/Text', () => {
     expect(cta).toBeInTheDocument()
     expect(cta).toHaveStyle(`color: ${theme.colors.dark}`)
     expect(cta).toHaveStyle(`font-size: ${theme.fontSizes.cta}`)
-    expect(cta).toHaveStyle(`font-weight: bold`)
+    expect(cta).toHaveStyle('font-weight: bold')
 
     rerender(<Cta color="success">Cta Text</Cta>)
     expect(cta).toHaveStyle(`color: ${theme.colors.success}`)

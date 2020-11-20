@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest --colors"
+    "test": "jest --colors",
+    "lint": "eslint src --ext ts,tsx",
+    "lint:fix": "yarn lint --fix",
+    "tsc": "tsc --skipLibCheck"
   },
   "dependencies": {
     "next": "10.0.1",
