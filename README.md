@@ -22,12 +22,16 @@ There are 3 routes in general
 We use **Figma** to draw the screens :pencil2:  [check here](https://www.figma.com/file/bSAxiXyPs5kIxBrla8NN6n/Lite?node-id=3%3A2)
 
 ## Installation
+
+> Check if you have installed `nvm`
+
 1. In your terminal
 ```sh
+$ nvm use
 $ docker-compose up --build
 ```
 
-2. In your browser:
+2. In your browser
 ```sh
 http://localhost:3000
 ```

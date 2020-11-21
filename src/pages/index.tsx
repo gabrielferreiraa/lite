@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useCallback } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { useRecoilState } from 'recoil'
@@ -24,14 +24,21 @@ const Home: React.FC = () => {
   const router = useRouter()
   const [order, setOrder] = useRecoilState(orderState)
 
-  const handleChangeQtdConsults = (value: number) => {
-    const isGreaterThanMax = value > MAX_OF_CONSULTS
+  const handleChangeQtdConsults = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const isValid = !!event.target.value && !Number.isNaN(event.target.value)
+      if (!isValid) event.preventDefault()
 
-    setOrder({
-      ...order,
-      qtdConsults: isGreaterThanMax ? MAX_OF_CONSULTS : value,
-    })
-  }
+      const value = Number(event.target.value)
+
+      const isGreaterThanMax = value > MAX_OF_CONSULTS
+      setOrder({
+        ...order,
+        qtdConsults: isGreaterThanMax ? MAX_OF_CONSULTS : value,
+      })
+    },
+    [],
+  )
 
   useEffect(
     () =>
@@ -76,9 +83,7 @@ const Home: React.FC = () => {
               value={order.qtdConsults}
               minLength={MIN_OF_CONSULTS}
               maxLength={MAX_OF_CONSULTS}
-              onChange={({ target }) =>
-                handleChangeQtdConsults(Number(target.value))
-              }
+              onChange={handleChangeQtdConsults}
             />
             <Body color="grey400">consults</Body>
           </QuantityConsultsWrapper>

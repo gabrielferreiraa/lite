@@ -118,7 +118,12 @@ const Summary: React.FC = () => {
 
         <CheckoutActions>
           <Link href="/summary">summary</Link>
-          <PayButton type="submit" label="PAY" color="success" />
+          <PayButton
+            type="submit"
+            label="PAY"
+            color="success"
+            onClick={() => null}
+          />
         </CheckoutActions>
       </form>
     </div>

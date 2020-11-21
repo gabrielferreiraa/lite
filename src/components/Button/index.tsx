@@ -4,16 +4,16 @@ import ButtonStyled from './Button.styles'
 
 interface Props {
   label: string
+  onClick: () => void
   outline?: boolean
   color?: keyof typeof theme.colors
-  onClick?: () => void
   type?: 'button' | 'submit'
 }
 const Button: React.FC<Props> = ({
   label,
+  onClick,
   outline = false,
   color = 'primary',
-  onClick = () => null,
   type = 'button',
   ...props
 }) => {
