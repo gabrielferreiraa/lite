@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "next": "10.0.1",
-    "polished": "4.0.3",
+    "polished": "4.2.2",
     "rc-slider": "9.6.3",
     "react": "17.0.1",
     "react-credit-cards": "0.8.3",
